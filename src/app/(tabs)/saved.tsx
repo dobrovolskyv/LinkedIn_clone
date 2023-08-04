@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 
-export default function TabTwoScreen() {
+export default function SavedScreen() {
   return (
     <View style={styles.container}>
-        <Text>Tab two</Text>
+        <Text>Saved</Text>
     </View>
   );
 }
