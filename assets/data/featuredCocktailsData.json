@@ -1,0 +1,20 @@
+[
+    {
+        "id": "2",
+        "author":{
+            "id": "u2",
+            "name": "Petr",
+            "position": "lorem2"
+        },
+        "content": "i bealive"
+    },
+    {
+        "id": "2",
+        "author":{
+            "id": "u2",
+            "name": "Senya",
+            "position": "lorem3"
+        },
+        "content": "i can fly"
+    }
+]

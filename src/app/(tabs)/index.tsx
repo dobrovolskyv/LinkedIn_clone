@@ -1,12 +1,18 @@
 import { StyleSheet } from 'react-native';
-
-
 import { Text, View } from '@/components/Themed';
+
+import FeaturedCocktailsList from '@/components/FeaturedCocktailsList';
+
+import fCocktail from "../../../assets/data/featuredCocktailsData.json"
+
+
+const firstPost = fCocktail[0]
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Discover</Text>
+
+      <FeaturedCocktailsList post={firstPost}/>
 
     </View>
   );
