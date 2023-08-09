@@ -2,7 +2,7 @@ export type Cocktail = {
     id: string;
     content: string;
     image?: string;
-    author: User;
+    cocktail: User;
 }
 
 export type User = {

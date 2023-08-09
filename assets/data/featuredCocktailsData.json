@@ -1,12 +1,13 @@
 [
     {
         "id": "2",
-        "author":{
+        "cocktail":{
             "id": "u2",
-            "name": "Petr",
-            "position": "lorem2"
+            "name": "Negroni",
+            "position": "Bitter, Sweet, Strong",
+            "image": "https://hips.hearstapps.com/hmg-prod/images/negroni-index-6464f78a5ae9a.jpg?crop=0.503xw:1.00xh;0.256xw,0&resize=1200:*"
         },
-        "content": "i bealive"
+        "content": "Gin: 30ml; Vermouth: 30ml; Campari: 30ml"
     },
     {
         "id": "2",
