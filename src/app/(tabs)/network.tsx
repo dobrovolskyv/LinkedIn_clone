@@ -1,12 +1,10 @@
 import { StyleSheet } from 'react-native';
-
-
 import { Text, View } from '@/components/Themed';
 
-export default function FindScreen() {
+export default function NetworkScreen() {
   return (
     <View style={styles.container}>
-        <Text>Find Screen</Text>
+      <Text style={styles.title}>Network</Text>
     </View>
   );
 }
@@ -20,10 +18,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });

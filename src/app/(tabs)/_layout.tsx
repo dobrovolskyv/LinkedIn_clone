@@ -1,5 +1,4 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import Entypo from '@expo/vector-icons/Entypo';
 import { Link, Tabs } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
 
@@ -21,22 +20,22 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        // tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        tabBarActiveTintColor: 'red',
-      }}>
+        tabBarActiveTintColor: '#191919',
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Discover',
+          title: 'Home Feed',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
+            <Link href="/search" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
+                    name="search"
+                    size={18}
+                    color="gray"
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
@@ -46,31 +45,35 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="find"
+        name="network"
         options={{
-          title: 'find',
-          tabBarIcon: ({ color }) => <TabBarIcon name="search" color={color} />,
+          title: 'My Network',
+          tabBarIcon: ({ color }) => <TabBarIcon name="group" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="tutorials"
+        name="new"
         options={{
-          title: 'tutorials',
-          tabBarIcon: ({ color }) => <TabBarIcon name="play-circle-o" color={color} />,
+          title: 'Post',
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="plus-square" color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="saved"
+        name="notifications"
         options={{
-          title: 'saved',
-          tabBarIcon: ({ color }) => <TabBarIcon name="bookmark" color={color} />,
+          title: 'Notifications',
+          tabBarIcon: ({ color }) => <TabBarIcon name="bell" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="account"
+        name="jobs"
         options={{
-          title: 'account',
-          tabBarIcon: ({ color }) => <TabBarIcon name="glass" color={color} />,
+          title: 'Jobs',
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="briefcase" color={color} />
+          ),
         }}
       />
     </Tabs>

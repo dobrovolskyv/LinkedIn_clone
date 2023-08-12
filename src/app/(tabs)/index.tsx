@@ -1,36 +1,14 @@
-import { StyleSheet } from 'react-native';
-import { Text, View } from '@/components/Themed';
+import { FlatList } from 'react-native';
+import PostListItem from '@/components/PostListItem';
+import posts from '../../../assets/data/posts.json';
 
-import FeaturedCocktailsList from '@/components/FeaturedCocktailsList';
-
-import fCocktail from "../../../assets/data/featuredCocktailsData.json"
-
-
-const firstPost = fCocktail[0]
-
-export default function TabOneScreen() {
+export default function HomeFeedScreen() {
   return (
-    <View style={styles.container}>
-
-      <FeaturedCocktailsList post={firstPost}/>
-
-    </View>
+    <FlatList
+      data={posts}
+      renderItem={({ item }) => <PostListItem post={item} />}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ gap: 10 }}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
