@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import { Link } from 'expo-router';
 import { Post } from '@/types';
 import { FontAwesome } from '@expo/vector-icons';
-import Account from '@/app/(tabs)/new-post';
+
 
 type PostListItemProps = {
   post: Post;
