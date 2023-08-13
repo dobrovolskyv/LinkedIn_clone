@@ -8,20 +8,20 @@ type UserListItemProps = {
     user: User
 }
 
-export default function UserListItem({user}:UserListItemProps ) {
-
+export default function UserListItem({ user }: UserListItemProps) {
     return (
-        <Link href={`/users/${user.id}`} asChild>
-            <Pressable style={styles.header}>
-            <Image source={{ uri: user.image }} style={styles.userImage} />
-                <View>
-                    <Text style={styles.userName}>{user.name}</Text>
-                    <Text>{user.position}</Text>
-                </View>
-            </Pressable>
-        </Link>
-    )
-}
+      <Link href={`/users/${user.id}`} asChild>
+        <Pressable style={styles.header}>
+          <Image source={{ uri: user.image }} style={styles.userImage} />
+          <View>
+            <Text style={styles.userName}>{user.name}</Text>
+            <Text>{user.position}</Text>
+          </View>
+        </Pressable>
+      </Link>
+    );
+  }
+  
 
 
 const styles= StyleSheet.create({
