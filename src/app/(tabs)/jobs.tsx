@@ -4,7 +4,7 @@ import { Text, View } from '@/components/Themed';
 export default function JobsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Jobs Screen</Text>
+      <Text style={styles.title}>Jobs Screens!</Text>
     </View>
   );
 }
