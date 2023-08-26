@@ -24,11 +24,11 @@ const PostListItem = ({ post }: PostListItemProps) => {
   return (
     <Link href={`/posts/${post.id}`} asChild>
       <Pressable style={styles.container}>
-        <Link href={`/users/${post.author.id}`} asChild>
+        <Link href={`/users/${post.profile.id}`} asChild>
           <Pressable style={styles.header}>
             <View>
-              <Text style={styles.userName}>{post.author.name}</Text>
-              <Text style={styles.position}>{post.author.position}</Text>
+              <Text style={styles.userName}>{post.profile.name}</Text>
+              <Text style={styles.position}>{post.profile.position}</Text>
             </View>
           </Pressable>
         </Link>

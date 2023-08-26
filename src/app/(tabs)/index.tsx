@@ -1,14 +1,43 @@
-import { FlatList } from 'react-native';
+import { FlatList, Text, ActivityIndicator } from 'react-native';
 import PostListItem from '@/components/PostListItem';
-import posts from '../../../assets/data/posts.json';
+import { gql, useQuery } from '@apollo/client';
+import React from 'react';
+
+const postList = gql`
+  query PostListQuery {
+    postList {
+      id
+      content
+      image
+      profile {
+        id
+        name
+        position
+        image
+      }
+    }
+  }
+`;
 
 export default function HomeFeedScreen() {
-  return (
-    <FlatList
-      data={posts}
-      renderItem={({ item }) => <PostListItem post={item} />}
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ gap: 10 }}
-    />
-  );
+  const { loading, error, data, } = useQuery(postList);
+
+  if (loading) {
+    return <ActivityIndicator />
+  }
+  if (error) {
+    console.log(error);
+
+    return <Text>Sometihng went wrong!</Text>
+  }
+
+
+return (
+  <FlatList
+    data={data.postList}
+    renderItem={({ item }) => <PostListItem post={item} />}
+    showsVerticalScrollIndicator={false}
+    contentContainerStyle={{ gap: 10 }}
+  />
+);
 }
