@@ -1,8 +1,7 @@
-import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
-import { Link } from 'expo-router';
+import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
 import { Post } from '@/types';
 import { FontAwesome } from '@expo/vector-icons';
-
+import { Link } from 'expo-router';
 
 type PostListItemProps = {
   post: Post;
@@ -13,31 +12,44 @@ type FooterButtonProp = {
   icon: React.ComponentProps<typeof FontAwesome>['name'];
 };
 
-const FooterButton = ({ text, icon }: FooterButtonProp) => (
-  <View style={styles.footerButton}>
-    <FontAwesome name={icon} size={16} color="gray" />
-    <Text style={styles.footerButtonText}>{text}</Text>
-  </View>
-);
+function FooterButton({ text, icon }: FooterButtonProp) {
+  return (
+    <View style={{ flexDirection: 'row' }}>
+      <FontAwesome name={icon} size={16} color="gray" />
+      <Text style={{ marginLeft: 5, color: 'gray', fontWeight: '500' }}>
+        {text}
+      </Text>
+    </View>
+  );
+}
 
-const PostListItem = ({ post }: PostListItemProps) => {
+export default function PostListItem({ post }: PostListItemProps) {
   return (
     <Link href={`/posts/${post.id}`} asChild>
       <Pressable style={styles.container}>
+        {/* Header */}
         <Link href={`/users/${post.profile.id}`} asChild>
           <Pressable style={styles.header}>
+            <Image
+              source={{ uri: post.profile.image }}
+              style={styles.userImage}
+            />
             <View>
               <Text style={styles.userName}>{post.profile.name}</Text>
-              <Text style={styles.position}>{post.profile.position}</Text>
+              <Text>{post.profile.position}</Text>
             </View>
           </Pressable>
         </Link>
 
+        {/* Text content */}
         <Text style={styles.content}>{post.content}</Text>
+
+        {/* Image content */}
         {post.image && (
           <Image source={{ uri: post.image }} style={styles.postImage} />
         )}
 
+        {/* Footer */}
         <View style={styles.footer}>
           <FooterButton text="Like" icon="thumbs-o-up" />
           <FooterButton text="Comment" icon="comment-o" />
@@ -46,34 +58,35 @@ const PostListItem = ({ post }: PostListItemProps) => {
       </Pressable>
     </Link>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    maxWidth: 600,
     width: '100%',
+    maxWidth: 500,
     alignSelf: 'center',
   },
+
+  // Header
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
   },
+  userName: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginBottom: 5,
+  },
   userImage: {
     width: 50,
-    aspectRatio: 1,
+    height: 50,
     borderRadius: 25,
     marginRight: 10,
   },
-  userName: {
-    fontWeight: '600',
-    marginBottom: 5,
-  },
-  position: {
-    fontSize: 12,
-    color: 'grey',
-  },
+
+  // Body
   content: {
     margin: 10,
     marginTop: 0,
@@ -82,22 +95,13 @@ const styles = StyleSheet.create({
     width: '100%',
     aspectRatio: 1,
   },
+
+  // footer
   footer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
     paddingVertical: 10,
-    borderTopWidth: 1,
+    justifyContent: 'space-around',
+    borderTopWidth: 0.5,
     borderColor: 'lightgray',
   },
-  footerButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  footerButtonText: {
-    marginLeft: 5,
-    color: 'gray',
-    fontWeight: '600',
-  },
 });
-
-export default PostListItem;
